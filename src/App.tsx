@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import mobile from "./assets/images/illustration-sign-up-mobile.svg";
+import icon from "./assets/images/icon-list.svg";
+import viteLogo from "/vite.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="flex flex-col border-red-500 border-2 max-w-[430px]  m-auto ">
+      <img src={mobile}></img>
+      <div className="p-7 flex flex-col gap-7">
+        <h1 className="text-4xl font-bold">Stay updated!</h1>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul>
+          <div className="flex flex-row gap-3 items-center">
+            <img src={icon} className="h "></img>
+            <li>Product discovery and building what matters</li>
+          </div>
+          <div className="flex flex-row gap-3  items-center">
+            <img src={icon} className=""></img>{" "}
+            <li>Measuring to ensure updates are a success</li>
+          </div>
+          <div className="flex flex-row gap-3  items-center">
+            <img src={icon} className=""></img>
+            <li>And much more!</li>
+          </div>
+        </ul>
+        <form className="flex flex-col gap- 3">
+          <label className="text-[14px] font-semibold">Email address</label>
+          <input
+            placeholder="email@company.com"
+            className="W  border-2"
+            type="email"
+            id="email"
+            name="email"
+            required
+          ></input>
+        </form>
+        <button className="rounded-xl p-4 text-white bg-slate-600">
+          Subscribe to monthly newsletter
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
