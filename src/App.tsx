@@ -51,7 +51,7 @@ function Initial({ onSubmit }) {
           ></input>
           <button
             type="submit"
-            className="rounded-xl p-5 text-white font-bold bg-[#172554]"
+            className="rounded-xl   p-5 text-white font-bold bg-[#172554] hover:bg-gradient-to-r from-[#ff5476] to-[#f96c42]  hover:shadow-2xl  hover:shadow-[#ff673f]"
           >
             Subscribe to monthly newsletter
           </button>
