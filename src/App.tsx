@@ -4,7 +4,7 @@ import desktop from "./assets/images/illustration-sign-up-desktop.svg";
 import icon from "./assets/images/icon-list.svg";
 import viteLogo from "/vite.svg";
 
-function Initial(props) {
+function Initial({ onSubmit }) {
   return (
     <div className="flex  flex-col bg-white rounded-xl md:  md:max-w-[1018px] md:flex-row-reverse max-w-[430px] text-[#172554] font-custom m-auto ">
       <img src={mobile} className="block md:hidden"></img>
@@ -35,7 +35,7 @@ function Initial(props) {
           onSubmit={(event) => {
             event?.preventDefault();
             console.log("validationlogic");
-            props.onSubmit();
+            onSubmit();
           }}
         >
           <label className="text-[14px] font-semibold  text-[#172554]">
@@ -49,7 +49,10 @@ function Initial(props) {
             name="email"
             required
           ></input>
-          <button className="rounded-xl p-5 text-white font-bold bg-[#172554]">
+          <button
+            type="submit"
+            className="rounded-xl p-5 text-white font-bold bg-[#172554]"
+          >
             Subscribe to monthly newsletter
           </button>
         </form>
@@ -70,13 +73,13 @@ function App() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   return (
     <div className="md:bg-[#36384c] h-screen flex justify-center ">
-      ({" "}
+      (
       {isSubscribed ? (
         <Success />
       ) : (
         <Initial
           onSubmit={() => {
-            console.log(" fromParents ");
+            setIsSubscribed(true);
           }}
         />
       )}
