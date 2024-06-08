@@ -51,40 +51,30 @@ function Initial({ onSubmit, onEmail }) {
         >
           {error ? (
             <>
-              <span className="flex flex-row justify-between">
-                <label className="text-[14px] font-semibold  text-[#172554]">
-                  Email address
-                </label>
-                <div className="text-[#f3958d] font-bold text-xs">
-                  Valid email required
-                </div>
-              </span>
-              <input
-                placeholder="email@company.com"
-                className="h-14 bg-[#ffe8e6] border-spacing-1 border-[#f3958d] placeholder:text-[#e07d74] w-full placeholder:pl-4 rounded-lg border-2"
-                type="text"
-                id="email"
-                name="email"
-                required
-              ></input>
+              <div className="text-[#f3958d] font-bold text-xs">
+                Valid email required
+              </div>
             </>
           ) : (
-            <div>
-              <span className="flex flex-row justify-between">
-                <label className="text-[14px] font-semibold  text-[#172554]">
-                  Email address
-                </label>
-              </span>
-              <input
-                placeholder="email@company.com"
-                className="h-14 w-full placeholder:pl-4 rounded-lg border-2"
-                type="text"
-                id="email"
-                name="email"
-                required
-              ></input>
-            </div>
-          )}
+            <div></div>
+          )}{" "}
+          <span className="flex flex-row justify-between">
+            <label className="text-[14px] font-semibold  text-[#172554]">
+              Email address
+            </label>
+          </span>
+          <input
+            placeholder="email@company.com"
+            className={
+              !error
+                ? "h-14 w-full placeholder:pl-4 rounded-lg border-2"
+                : "h-14 bg-[#ffe8e6] border-spacing-1 border-[#f3958d] placeholder:text-[#e07d74] w-full placeholder:pl-4 rounded-lg border-2"
+            }
+            type="text"
+            id="email"
+            name="email"
+            required
+          ></input>
           <button
             type="submit"
             className="rounded-xl   p-5 text-white font-bold bg-[#172554] hover:bg-gradient-to-r from-[#ff5476] to-[#f96c42]  hover:shadow-2xl  hover:shadow-[#ff673f]"
