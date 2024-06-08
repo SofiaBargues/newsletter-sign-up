@@ -4,7 +4,12 @@ import desktop from "./assets/images/illustration-sign-up-desktop.svg";
 import icon from "./assets/images/icon-list.svg";
 import viteLogo from "/vite.svg";
 
+function validateEmail(email: string) {
+  return /\S+@\S+\.\S+/.test(email);
+}
+
 function Initial({ onSubmit, onEmail }) {
+  const [error, setError] = useState(false);
   return (
     <div className="flex  flex-col bg-white rounded-xl md:  md:max-w-[1018px] md:flex-row-reverse max-w-[430px] text-[#172554] font-custom m-auto ">
       <img src={mobile} className="block md:hidden"></img>
@@ -34,22 +39,52 @@ function Initial({ onSubmit, onEmail }) {
           className="flex flex-col gap-3"
           onSubmit={(event) => {
             event?.preventDefault();
-            console.log("validationlogic");
-            onEmail(" pep");
-            onSubmit();
+            const data = new FormData(event.target);
+            const email = data.get("email") as string;
+            if (validateEmail(email)) {
+              onEmail(email);
+              onSubmit();
+            } else {
+              setError(true);
+            }
           }}
         >
-          <label className="text-[14px] font-semibold  text-[#172554]">
-            Email address
-          </label>
-          <input
-            placeholder="email@company.com"
-            className="h-14 placeholder:pl-4 rounded-lg border-2"
-            type="email"
-            id="email"
-            name="email"
-            required
-          ></input>
+          {error ? (
+            <>
+              <span className="flex flex-row justify-between">
+                <label className="text-[14px] font-semibold  text-[#172554]">
+                  Email address
+                </label>
+                <div className="text-[#f3958d] font-bold text-xs">
+                  Valid email required
+                </div>
+              </span>
+              <input
+                placeholder="email@company.com"
+                className="h-14 bg-[#ffe8e6] border-spacing-1 border-[#f3958d] placeholder:text-[#e07d74] w-full placeholder:pl-4 rounded-lg border-2"
+                type="text"
+                id="email"
+                name="email"
+                required
+              ></input>
+            </>
+          ) : (
+            <div>
+              <span className="flex flex-row justify-between">
+                <label className="text-[14px] font-semibold  text-[#172554]">
+                  Email address
+                </label>
+              </span>
+              <input
+                placeholder="email@company.com"
+                className="h-14 w-full placeholder:pl-4 rounded-lg border-2"
+                type="text"
+                id="email"
+                name="email"
+                required
+              ></input>
+            </div>
+          )}
           <button
             type="submit"
             className="rounded-xl   p-5 text-white font-bold bg-[#172554] hover:bg-gradient-to-r from-[#ff5476] to-[#f96c42]  hover:shadow-2xl  hover:shadow-[#ff673f]"
@@ -71,7 +106,7 @@ function Success({ onClick, email }) {
         </span>
         <h1 className="font-bold flex text-5xl">Thanks for subscribing!</h1>
         <p className="text-xs leading-5">
-          A confirmation email has been sent to{" "}
+          A confirmation email has been sent to
           <span className="font-bold">{email}</span>. Please open it and click
           the button inside to confirm your subscription.
         </p>
