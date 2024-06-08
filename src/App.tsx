@@ -63,8 +63,21 @@ function Initial({ onSubmit }) {
 
 function Success() {
   return (
-    <div className="flex  flex-col bg-white rounded-xl md:  md:max-w-[1018px] md:flex-row-reverse max-w-[430px] text-[#172554] font-custom m-auto ">
-      fujksedjikf
+    <div className="flex flex-col h-screen md:gap-6 bg-white md:p-[51px] md:rounded-xl justify-around p-[31px] md:justify-around md:w-[406px] md:h-[420px]  max-w-[430px] text-[#172554] font-custom m-auto ">
+      <span className="flex flex-col gap-5">
+        <span>
+          <img src={icon} className="h-[51px] "></img>
+        </span>
+        <h1 className="font-bold flex text-5xl">Thanks for subscribing!</h1>
+        <p className="text-xs leading-5">
+          A confirmation email has been sent to{" "}
+          <span className="font-bold">ash@loremcompany.com</span>. Please open
+          it and click the button inside to confirm your subscription.
+        </p>
+      </span>
+      <button className="h-[44px] w-[300px] text-white text-sm hover:bg-gradient-to-r from-[#ff5476] to-[#f96c42]  hover:shadow-2xl  hover:shadow-[#ff673f]  bg-[#232742]  rounded-md">
+        Dimiss message
+      </button>
     </div>
   );
 }
