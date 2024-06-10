@@ -49,26 +49,22 @@ function Initial({ onSubmit, onEmail }) {
             }
           }}
         >
-          {error ? (
-            <>
-              <div className="text-[#f3958d] font-bold text-xs">
-                Valid email required
-              </div>
-            </>
-          ) : (
-            <div></div>
-          )}{" "}
-          <span className="flex flex-row justify-between">
+          <div className="flex flex-row justify-between">
             <label className="text-[14px] font-semibold  text-[#172554]">
               Email address
             </label>
-          </span>
+            {error && (
+              <div className="text-[#f3958d] font-bold text-xs">
+                Valid email required
+              </div>
+            )}
+          </div>
           <input
             placeholder="email@company.com"
             className={
               !error
-                ? "h-14 w-full placeholder:pl-4 rounded-lg border-2"
-                : "h-14 bg-[#ffe8e6] border-spacing-1 border-[#f3958d] placeholder:text-[#e07d74] w-full placeholder:pl-4 rounded-lg border-2"
+                ? "pl-4 h-14 w-full  rounded-lg border-2"
+                : "pl-4 h-14 bg-[#ffe8e6] border-spacing-1 border-[#f3958d] text-[#e07d74] placeholder:text-[#e07d74] w-full  rounded-lg border-2"
             }
             type="text"
             id="email"
